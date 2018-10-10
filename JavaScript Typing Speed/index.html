@@ -16,11 +16,14 @@
         </header>
         <main class="main">
             <article class="intro">
-                <p>This is a typing test. Your goal is to duplicate the provided text, EXACTLY, in the field below. The timer starts when you start typing, and only stops when you match this text exactly. Good Luck!</p>
+                <h3>This is a typing test. The timer starts when you start typing, and only stops when you match this text exactly. Good Luck!</h3>
+                
+                <h4>BTW, Here is the <a href="https://github.com/DhananjayTrivedi/JavaScript/tree/master/JavaScript%20Typing%20Speed">Github</a> link to this project.</h4>
+                
             </article><!-- .intro -->
             <section class="test-area">
                 <div id="origin-text">
-                    <p>The text to test.</p>
+                    <p id="testText">The text to test.</p>
                 </div><!-- #origin-text -->
 
                 <div class="test-wrapper">
@@ -33,8 +36,15 @@
                     </section>
 
                     <button id="reset">Reset</button>
+
+
+                    <div id = "stats"> 
+                        <h3 id="speed">You Current Speed is 00 Words Per minute.</h3>
+                    </div>
                 </div><!-- .meta -->
             </section><!-- .test-area -->
+
+
         </main>
 
     </body>

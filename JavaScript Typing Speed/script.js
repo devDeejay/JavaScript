@@ -1,12 +1,28 @@
 const testWrapper = document.querySelector(".test-wrapper");
 const testArea = document.querySelector("#test-area");
-const originText = document.querySelector("#origin-text p").innerHTML;
 const resetButton = document.querySelector("#reset");
 const theTimer = document.querySelector(".timer");
+const statsSection = document.getElementById("stats");
+
+statsSection.style.display = "none";
+
+var originText = document.querySelector("#testText").innerHTML;
+
+var testStrings = [
+
+    "The crowd of delegates is made up of predominantly indigenous representatives from all the continents, along with UN representatives from the various member nations. Together, they swell the General Assembly.",
+
+    "More applause from the gathered indigenous delegates. Even the blonde-haired, pale-skinned, reindeer-herding Sami people from Sweden, Finland, Russia and Norway. Evo Morales summarizes his opening remarks with a reminder of the power of solidarity.",
+
+    "In the subsequent decade since it was approved, UNDRIP has served as the principal document guiding this international body and its member states on indigenous issues. It took 25 years to be debated, negotiated, and then finally approved with a vote of the General Assembly.",
+
+    "Everybody is a walking price tag, and doing the math is as easy as a Google search on the free, ubiquitous wifi. The air is thick with humidity and money: Women wear ground-length Opening Ceremony raincoats."
+];
 
 var interval;
 var timerRunning;
 var numberOfWords;
+var timeInSeconds;
 var numberOfWordsPerMinute;
 var numberOfWordsPerSecond;
 var numberOfErrors;
@@ -14,10 +30,18 @@ var timer;
 
 initializeValues();
 
+function generateARandomTestString() {
+    var index = Math.floor(Math.random() * testStrings.length);  
+    document.getElementById("testText").innerHTML = testStrings[index];
+    originText = testStrings[index]; 
+}
+
 function initializeValues () {
+    statsSection.style.display = "none";
+
     interval = null;
     timerRunning = false;
-    timer = [0,0,0,0];
+    timer = [0, 0, 0, 0];
     numberOfWords = 0;
     numberOfWordsPerMinute = 0;
     numberOfWordsPerSecond = 0;
@@ -26,6 +50,8 @@ function initializeValues () {
     testArea.value = "";
     theTimer.innerHTML = "00:00:00";
     testWrapper.style.borderColor = "grey";
+
+    generateARandomTestString();
 }
 
 // Add leading zero to numbers 9 or below (purely for aesthetics):
@@ -52,6 +78,7 @@ function runTimer() {
 // Start the timer when the text entered starts i.e. length is 0
 
 function start() {
+    statsSection.style.display = "block";
     let textEnteredLenght = testArea.value.length;
 
     if (textEnteredLenght === 0 && !timerRunning) {
@@ -62,13 +89,15 @@ function start() {
 
 function calculateAndDisplayStatistics() {
 
-    var timeInSeconds = timer[3]/100;
+    timeInSeconds = timer[3]/100;
     console.log(timeInSeconds);
 
     numberOfWords = testArea.value.split(' ').length;
 
     numberOfWordsPerSecond = numberOfWords/timeInSeconds;
     numberOfWordsPerMinute = numberOfWordsPerSecond * 60;
+
+    document.getElementById("speed").innerHTML = "You speed was " + Math.floor(numberOfWordsPerMinute) + " words per minute. <br> You made a total of " + numberOfErrors + " errors.";
 
 }
 
@@ -77,14 +106,21 @@ function stopTimer() {
     clearInterval(interval);
 }
 
+function showCurrentSpeed() {
+    timeInSeconds = timer[3]/100;
+    numberOfWordsPerSecond = numberOfWords / timeInSeconds;
+    numberOfWordsPerMinute = numberOfWordsPerSecond * 60;
+
+    document.getElementById("speed").innerHTML = "Current speed is " + Math.floor(numberOfWordsPerMinute) + " wpm.";
+}
+
 function spellCheck() {
     let textEntered = testArea.value;
     let originTextMatch = originText.substr(0, textEntered.length);
 
     numberOfWords = testArea.value.split(' ').length;
 
-    numberOfWordsPerSecond= numberOfWords/timeInSeconds;
-    numberOfWordsPerMinute = numberOfWordsPerSecond * 60;
+    showCurrentSpeed();
 
     if (textEntered == originText) {
         testWrapper.style.borderColor = "#429890";
