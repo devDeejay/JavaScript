@@ -1,0 +1,41 @@
+ES6 Tutorial By Dhananjay Trivedi : 
+
+    ECMA : European Computer Manufacture Association
+
+    Not all ES6 code is compatible with browsers hence needs to be downgraded to ES5 (that came in 2009). We use transpilers for that like Babel.js, Traceur, Closure. Transpiling is the process of converting code to a format that can be read by a browser
+    Chrome canary is a new browser that supports ES6. ES6 will work with browsers when the browser will support all of the features.
+
+    Babel is quite popular and was developed by an Australian Engineer who currently works at Facebook.
+
+    Code
+    ``` 
+    
+    ```
+
+
+    Declaring Variables in JavaScript:
+
+
+
+        var message = "Hello";      // This was problamatic 
+        
+        Hence, JavaScipt2015 came with two new keywords.
+
+            const pi = 3.14159;     // Only for constant values, it's value cannot be updated / changed
+            let score = 0;          // Only for 
+            
+        Using const : 
+            
+            When values of variables once assigned, cannot be changed.
+            You cannot change or update a single variable, but you can add up more values to a constant array.
+
+                Like, const days = ["Sunday"];
+
+                Doing days.push("Monday") won't give you an error.
+            
+            Similary for Object 
+            
+                const person = {firstName : "Dhananjay"};
+                
+                Doing, person.lastName = "Trivedi" is a valid operation.
+                But, person.firstName = "Divya" is an invalid operation.
