@@ -1,32 +1,45 @@
 ES6 Tutorial By Dhananjay Trivedi : 
 
-    ECMA : European Computer Manufacture Association
+    Section 1 : Intro to Babel
 
-    Not all ES6 code is compatible with browsers hence needs to be downgraded to ES5 (that came in 2009). We use transpilers for that like Babel.js, Traceur, Closure. Transpiling is the process of converting code to a format that can be read by a browser
-    Chrome canary is a new browser that supports ES6. ES6 will work with browsers when the browser will support all of the features.
+        ECMA : European Computer Manufacture Association
 
-    Babel is quite popular and was developed by an Australian Engineer who currently works at Facebook.
+        Not all ES6 code might not be compatible with browsers hence needs to be downgraded to ES5 (that came in 2009). We use transpilers for that like Babel.js, Traceur, Closure. Transpiling is the process of converting code to a format that can be read by a browser
+        Chrome canary is a new browser that supports ES6. ES6 will work with browsers when the browser will support all of the features. But be assured with time you more and more browsers will keep adding up to the compatible list, but as good programmers we must consider all of our users.
 
-    Code
-    ``` 
-    
-    ```
+        Babel is quite popular and was developed by an Australian Engineer who currently works at Facebook.
 
+        Refer 1.1
 
-    Declaring Variables in JavaScript:
+    Section 2 : Webpack
 
+        1. npm init
+            Initializes a json project structure file, follow through the CLI wizard.
 
+        2. npm install -g webpack
+            Installs webpack
 
-        var message = "Hello";      // This was problamatic 
+        3. npm install --save-dev babel-loader
+            It will convert ES6 to ES5
+
+        Now, we need to create a webpack config file.
+
+        Now this helps maintains the project dependencies, does all the hardwork for us automatically.
+
+    Section 3 :
+
+        Declaring Variables in JavaScript:
+
+        var message = "Hello";      // This was problamatic especially with variable scoping. See section 3.
         
         Hence, JavaScipt2015 came with two new keywords.
 
             const pi = 3.14159;     // Only for constant values, it's value cannot be updated / changed
-            let score = 0;          // Only for 
-            
+            let score = 0;          // Only for local variables
+
         Using const : 
             
-            When values of variables once assigned, cannot be changed.
+            When values of variables once assigned, cannot be changed, ie, CONSTANT VALUES!
             You cannot change or update a single variable, but you can add up more values to a constant array.
 
                 Like, const days = ["Sunday"];
@@ -39,3 +52,20 @@ ES6 Tutorial By Dhananjay Trivedi :
                 
                 Doing, person.lastName = "Trivedi" is a valid operation.
                 But, person.firstName = "Divya" is an invalid operation.
+
+        SECTION 4 :
+        MAP:                                        // Contains Key value pairs
+            var course = new Map();
+            course.set('react', {description : 'ui'});
+            course.set('jest', {description : 'testing'});      
+            
+            course.log(course);
+
+        SET:                                        // Contains Unique Values
+            var books = new set();
+            books.add('Pride and Prejudice');
+            books.add('War and Peace')
+            .add('Olive Twist');
+            console.log(books);
+
+        

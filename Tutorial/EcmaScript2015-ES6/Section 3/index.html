@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Variable Scoping in JS</title>
+
+	<style type="text/css">
+	
+		section > div {
+			height: 100px;
+			width: 100px;
+			background-color: red;
+			float: left;
+			margin: 3px;
+			cursor: pointer;
+		}
+
+	</style>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.24.0/babel.js"></script>
+	<script type="text/babel">
+
+		for ( let i = 0; i < 45; i++) {
+			var div = document.createElement('div');
+			div.onclick = function() {
+				alert("you clicked on a box #" + ++i);
+			};
+			document.getElementById("one").appendChild(div);
+		}
+
+	</script>
+
+	<script type="text/javascript"> /*Javascript Code to print a name through functions*/
+		function print(firstName) {
+			console.log("Hello " + firstName);
+		}
+
+		print("Dhananjay");
+	</script>
+
+	<script type="text/babel"> /*Babel Equivalent of above code*/
+		function print(firstName) {
+			console.log(`Hello ${firstName}`);
+		}
+
+		print("Dhananjay");
+
+		// ARRAYS : This is how you declare arrays and see the '...' symbol
+
+			var dogs = ["Pug", "Germen Shepard"];
+			var cats = ["Tabby", "Persian"];
+			var animals = ["Girrafe", "Lion" , ...cats, "Snakes", ...dogs];
+			console.log(animals);
+
+		// MAPS :
+
+			var course = new Map();
+			course.set('react', {description : 'ui'});
+			course.set('mocha', {description : 'testing'});
+
+			console.log(course);
+
+			console.log(course.get('react'));
+
+			var details = new Map([
+				[new Date(), 'today'],
+				['items', [1,2]]
+			]);
+
+			console.log(details.size);
+			
+			details.forEach(function(item) {
+				console.log(item);
+			});
+
+	</script>
+
+		
+</head>
+
+<body>
+
+	<header>
+		<h1>Click on the box</h1>
+	</header>
+
+	<section id="one"></section>
+	<section id="two"></section>
+
+</body>
+
+</html>
